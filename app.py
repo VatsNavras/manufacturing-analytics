@@ -1,6 +1,5 @@
 import streamlit as st
 import streamlit.components.v1 as components
-from PIL import Image
 
 from auth import login
 from sheets import load_data
@@ -16,13 +15,6 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
-
-# =========================================================
-# LOAD LOGOS
-# =========================================================
-
-mm_logo = Image.open("mm_logo.png")
-kisaan_logo = Image.open("kisaan_logo.png")
 
 # =========================================================
 # CUSTOM CSS
@@ -54,7 +46,6 @@ header    { visibility: hidden; }
 
 /* =========================================
    MAIN BACKGROUND
-   — deep navy + CNC machining photo overlay
 ========================================= */
 
 .stApp {
@@ -81,49 +72,6 @@ header    { visibility: hidden; }
     position: relative;
 }
 
-/* =========================================
-   LOGO ROW  (logo | divider | software text)
-========================================= */
-
-.logo-row {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    margin-bottom: 40px;
-}
-
-.logo-divider {
-    width: 1px;
-    height: 60px;
-    background: linear-gradient(to bottom, transparent, #1e6fc4, transparent);
-    opacity: 0.8;
-}
-
-.software-block {}
-
-.software-label {
-    font-family: 'Rajdhani', sans-serif;
-    color: #2e8de8;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 4px;
-}
-
-.software-name {
-    font-family: 'Barlow Condensed', sans-serif;
-    color: #ffffff;
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: 0.5px;
-}
-
-/* =========================================
-   MAIN TITLE
-========================================= */
-
 .main-title {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: clamp(52px, 6vw, 76px);
@@ -139,7 +87,6 @@ header    { visibility: hidden; }
     color: #2e8de8;
 }
 
-/* Red accent rule under headline */
 .headline-rule {
     width: 50px;
     height: 3px;
@@ -147,10 +94,6 @@ header    { visibility: hidden; }
     border-radius: 2px;
     margin: 18px 0 20px 0;
 }
-
-/* =========================================
-   SUB TEXT
-========================================= */
 
 .sub-text {
     font-family: 'Inter', sans-serif;
@@ -163,103 +106,7 @@ header    { visibility: hidden; }
 }
 
 /* =========================================
-   ANALYTICS CARDS  (glass-morphism)
-========================================= */
-
-.analytics-container {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-bottom: 0px;
-}
-
-.analytics-box {
-    min-width: 150px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-radius: 16px;
-    padding: 20px 22px;
-    transition: all 0.28s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.analytics-box::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #1e6fc4, transparent);
-    opacity: 0;
-    transition: opacity 0.28s ease;
-}
-
-.analytics-box:hover {
-    transform: translateY(-4px);
-    border-color: rgba(46, 141, 232, 0.4);
-    background: rgba(30, 111, 196, 0.12);
-}
-
-.analytics-box:hover::before {
-    opacity: 1;
-}
-
-.analytics-title {
-    font-family: 'Rajdhani', sans-serif;
-    color: #8aaacf;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-}
-
-.analytics-value {
-    font-family: 'Barlow Condensed', sans-serif;
-    color: #2e8de8;
-    font-size: 44px;
-    font-weight: 800;
-    line-height: 1;
-    letter-spacing: 0.5px;
-}
-
-/* =========================================
-   FOOTER PILLARS
-========================================= */
-
-.footer-menu {
-    display: flex;
-    align-items: center;
-    gap: 36px;
-    margin-top: 48px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.footer-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.footer-icon {
-    font-size: 17px;
-    color: #2e8de8;
-}
-
-.footer-label {
-    font-family: 'Rajdhani', sans-serif;
-    color: #7a94b8;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-}
-
-/* =========================================
-   LOGIN PANEL  (right card)
+   LOGIN PANEL
 ========================================= */
 
 .login-panel {
@@ -281,54 +128,6 @@ header    { visibility: hidden; }
     background: linear-gradient(90deg, #cc1f24 0%, #2e8de8 100%);
 }
 
-.client-divider {
-    width: 100%;
-    height: 1px;
-    background: #e0e7f0;
-    margin: 20px 0;
-}
-
-.client-kisaan {
-    font-family: 'Barlow Condensed', sans-serif;
-    color: #0d1f3c;
-    font-size: 48px;
-    font-weight: 900;
-    letter-spacing: 1px;
-    margin: 0;
-    line-height: 1;
-}
-
-.client-dietech {
-    font-family: 'Barlow Condensed', sans-serif;
-    color: #2e8de8;
-    font-size: 48px;
-    font-weight: 900;
-    letter-spacing: 1px;
-    margin: 0;
-    line-height: 1;
-}
-
-.welcome-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    color: #0d1f3c;
-    font-size: 42px;
-    font-weight: 900;
-    letter-spacing: 1px;
-    margin: 30px 0 8px 0;
-    text-align: center;
-}
-
-.welcome-subtitle {
-    font-family: 'Inter', sans-serif;
-    color: #6b7f99;
-    font-size: 13px;
-    font-weight: 400;
-    text-align: center;
-    margin-bottom: 30px;
-    line-height: 1.6;
-}
-
-/* Input styling */
 .stTextInput label {
     font-family: 'Rajdhani', sans-serif !important;
     font-size: 13px !important;
@@ -339,7 +138,6 @@ header    { visibility: hidden; }
     margin-bottom: 4px !important;
 }
 
-/* Input box */
 .stTextInput input {
     border-radius: 12px !important;
     padding: 14px 16px !important;
@@ -363,10 +161,6 @@ header    { visibility: hidden; }
     font-weight: 300 !important;
 }
 
-/* =========================================
-   LOGIN BUTTON
-========================================= */
-
 .stButton > button {
     width: 100% !important;
     border-radius: 12px !important;
@@ -382,7 +176,6 @@ header    { visibility: hidden; }
     margin-top: 10px !important;
     box-shadow: 0 6px 20px rgba(13, 31, 60, 0.4) !important;
     transition: all 0.2s ease !important;
-    position: relative !important;
 }
 
 .stButton > button:hover {
@@ -391,34 +184,10 @@ header    { visibility: hidden; }
     box-shadow: 0 10px 28px rgba(13, 31, 60, 0.5) !important;
 }
 
-.stButton > button:active {
-    transform: translateY(0px) !important;
-}
-
-/* =========================================
-   MOBILE RESPONSIVE
-========================================= */
-
 @media (max-width: 900px) {
-    .main-title {
-        font-size: 42px;
-    }
-    .sub-text {
-        width: 100%;
-        font-size: 15px;
-    }
-    .login-panel {
-        margin-top: 20px;
-        padding: 28px 24px;
-    }
-    .footer-menu {
-        gap: 16px;
-        flex-wrap: wrap;
-    }
-    .client-kisaan,
-    .client-dietech {
-        font-size: 38px;
-    }
+    .main-title { font-size: 42px; }
+    .sub-text { width: 100%; font-size: 15px; }
+    .login-panel { margin-top: 20px; padding: 28px 24px; }
 }
 
 </style>
@@ -439,27 +208,13 @@ if not st.session_state.logged_in:
 
     left, right = st.columns([1.6, 1])
 
-    # =====================================================
-    # LEFT SIDE
-    # =====================================================
-
     with left:
-
         st.markdown('<div class="left-panel">', unsafe_allow_html=True)
 
-        # Logo row: MM logo | divider | "Software Designed By" text
         st.markdown("""
-        <div style="display:flex;align-items:center;gap:24px;margin-bottom:28px;">
-        """, unsafe_allow_html=True)
-
-        st.image(mm_logo, width=200)
-
-        st.markdown("""
-            <div style="width:1px;height:60px;background:linear-gradient(to bottom,transparent,#1e6fc4,transparent);opacity:0.8;"></div>
-            <div>
-                <div style="font-family:'Rajdhani',sans-serif;color:#2e8de8;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;margin-bottom:4px;">Software Designed By</div>
-                <div style="font-family:'Barlow Condensed',sans-serif;color:#ffffff;font-size:22px;font-weight:700;line-height:1.2;letter-spacing:0.5px;">Manufacturing Minds<br>Precision LLP</div>
-            </div>
+        <div style="margin-bottom:28px;">
+            <div style="font-family:'Rajdhani',sans-serif;color:#2e8de8;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;">Software Designed By</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;color:#ffffff;font-size:22px;font-weight:700;line-height:1.2;letter-spacing:0.5px;">Manufacturing Minds<br>Precision LLP</div>
         </div>
         """, unsafe_allow_html=True)
 
@@ -475,12 +230,11 @@ if not st.session_state.logged_in:
         </div>
         """, unsafe_allow_html=True)
 
-        # Analytics cards + footer rendered via components.html to bypass Streamlit sanitizer
         components.html("""
         <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
         <style>
             * { margin:0; padding:0; box-sizing:border-box; }
-            body { background:transparent; font-family:sans-serif; }
+            body { background:transparent; }
             .cards { display:flex; gap:16px; flex-wrap:wrap; }
             .card {
                 min-width:150px;
@@ -496,7 +250,6 @@ if not st.session_state.logged_in:
             .value { font-family:'Barlow Condensed',sans-serif; color:#2e8de8; font-size:44px; font-weight:800; line-height:1; }
             .footer { display:flex; gap:32px; margin-top:32px; padding-top:18px; border-top:1px solid rgba(255,255,255,0.1); flex-wrap:wrap; }
             .pillar { display:flex; align-items:center; gap:8px; }
-            .pillar-icon { font-size:16px; }
             .pillar-text { font-family:'Rajdhani',sans-serif; color:#7a94b8; font-size:13px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; }
         </style>
         <div class="cards">
@@ -505,80 +258,51 @@ if not st.session_state.logged_in:
             <div class="card"><div class="label">Spindle Load</div><div class="value">65%</div></div>
         </div>
         <div class="footer">
-            <div class="pillar"><span class="pillar-icon">⊕</span><span class="pillar-text">Measure.</span></div>
-            <div class="pillar"><span class="pillar-icon">📊</span><span class="pillar-text">Analyze.</span></div>
-            <div class="pillar"><span class="pillar-icon">📈</span><span class="pillar-text">Optimize.</span></div>
-            <div class="pillar"><span class="pillar-icon">🏆</span><span class="pillar-text">Perform.</span></div>
+            <div class="pillar"><span>⊕</span><span class="pillar-text">Measure.</span></div>
+            <div class="pillar"><span>📊</span><span class="pillar-text">Analyze.</span></div>
+            <div class="pillar"><span>📈</span><span class="pillar-text">Optimize.</span></div>
+            <div class="pillar"><span>🏆</span><span class="pillar-text">Perform.</span></div>
         </div>
         """, height=240, scrolling=False)
 
         st.markdown("</div>", unsafe_allow_html=True)
 
-    # =====================================================
-    # RIGHT SIDE LOGIN
-    # =====================================================
-
     with right:
-
         st.markdown('<div class="login-panel">', unsafe_allow_html=True)
 
         st.markdown("""
-        <!-- DESIGNED FOR label -->
         <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:14px;">
             <div style="flex:1;height:1px;background:#d0d9e8;"></div>
-            <span style="font-family:'Rajdhani',sans-serif;color:#7a8fa8;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;white-space:nowrap;">Designed For</span>
+            <span style="font-family:'Rajdhani',sans-serif;color:#7a8fa8;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;white-space:nowrap;">Kisaan DieTech</span>
             <div style="flex:1;height:1px;background:#d0d9e8;"></div>
         </div>
-        """, unsafe_allow_html=True)
-
-        st.image(kisaan_logo, width=280)
-
-        st.markdown("""
-        <!-- Client tagline -->
+        
         <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:8px;margin-bottom:22px;">
             <div style="width:28px;height:1px;background:#cc1f24;"></div>
             <span style="font-family:'Rajdhani',sans-serif;font-size:9px;font-weight:700;letter-spacing:2.5px;color:#8a9ab8;text-transform:uppercase;">Precision In Every Detail</span>
             <div style="width:28px;height:1px;background:#cc1f24;"></div>
         </div>
 
-        <!-- Divider -->
         <div style="border-top:1px solid #e0e7f0;margin:0 0 22px 0;"></div>
 
-        <!-- Gear icon -->
-        <div style="text-align:center;font-size:22px;margin-bottom:8px;">⚙️</div>
+        <div style="text-align:center;font-size:32px;margin-bottom:12px;">⚙️</div>
 
-        <!-- Welcome Back -->
         <div style="font-family:'Barlow Condensed',sans-serif;text-align:center;color:#0d1f3c;font-size:34px;font-weight:800;letter-spacing:0.5px;margin-bottom:6px;">Welcome Back</div>
 
-        <!-- Subtitle -->
         <div style="text-align:center;color:#6b7f99;font-family:'Inter',sans-serif;font-size:13px;font-weight:400;line-height:1.5;margin-bottom:28px;">
             Login to access your machining analytics dashboard.
         </div>
         """, unsafe_allow_html=True)
 
-        username = st.text_input(
-            "Username",
-            placeholder="Enter Username"
-        )
-
-        password = st.text_input(
-            "Password",
-            type="password",
-            placeholder="Enter Password"
-        )
+        username = st.text_input("Username", placeholder="Enter Username")
+        password = st.text_input("Password", type="password", placeholder="Enter Password")
 
         if st.button("LOGIN"):
-
             if login(username, password):
-
                 st.session_state.logged_in = True
-
                 st.success("Login Successful")
-
                 st.rerun()
-
             else:
-
                 st.error("Invalid Username or Password")
 
         st.markdown("</div>", unsafe_allow_html=True)
@@ -588,9 +312,7 @@ if not st.session_state.logged_in:
 # =========================================================
 
 else:
-
     with st.spinner("Loading Dashboard..."):
-
         df = load_data()
 
     show_dashboard(df)
